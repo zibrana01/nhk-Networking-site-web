@@ -21,9 +21,15 @@ return new class extends Migration
             $table->integer('transaction_number');
             $table->enum('state', ['cancelled','pending','progressing']);
             $table->date('transaction_date');
-            $table->foreign('id')->references('id')->on('table_commandes')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('commandes')->onDelete('cascade');
             $table->timestamps();
         });
+
+        /**
+         * rename table name
+         */
+
+         Schema::rename('table_payments', 'payments');
     }
 
     /**
@@ -32,6 +38,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('table_payments');
+        Schema::rename('table_payments', 'payments');
+
     }
     public function Command(): BelongsTo
     {

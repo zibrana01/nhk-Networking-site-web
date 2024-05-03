@@ -18,9 +18,13 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->integer('quantity');
             $table->float('unit_price');
-            $table->foreign('id')->references('id')->on('table_products')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
+
+        //rename table name
+
+        Schema::rename('table_commande_lines', 'commande_lines');
     }
 
     /**
@@ -29,6 +33,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('table_commande_lines');
+        Schema::rename('table_commande_lines', 'commande_lines');
+
     }
 
     public function Product(): BelongsTo

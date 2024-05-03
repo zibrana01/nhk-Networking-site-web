@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Client;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -28,5 +30,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
+    }
+
+    public function Client(): HasOne
+    {
+        return $this->hasOne(Client::class);
     }
 };

@@ -26,9 +26,13 @@ return new class extends Migration
             $table->string('payment_mode');
             //$table->foreign('id')->references('id')->on('table_delivries')->onDelete('cascade');
             //$table->foreign('id')->references('id')->on('table_payments')->onDelete('cascade');
-            $table->foreign('id')->references('id')->on('table_clients')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('clients')->onDelete('cascade');
             $table->timestamps();
         });
+
+        //rename table name
+
+        Schema::rename('table_commandes', 'commandes');
     }
 
     /**
@@ -37,6 +41,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('table_commandes');
+        Schema::rename('table_commandes', 'commandes');
     }
 
     public function CommandLine(): HasMany

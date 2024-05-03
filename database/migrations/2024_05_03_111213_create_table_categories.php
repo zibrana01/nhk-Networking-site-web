@@ -16,9 +16,13 @@ return new class extends Migration
         Schema::create('table_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_category');
-            $table->foreign('id')->references('id')->on('table_products')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
+
+        //rename table
+
+        Schema::rename('table_categories', 'categories');
     }
 
     /**
@@ -27,6 +31,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('table_categories');
+
+        Schema::rename('table_categories', 'categories');
     }
 
     public function Product(): BelongsTo

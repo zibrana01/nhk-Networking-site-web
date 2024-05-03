@@ -24,6 +24,10 @@ return new class extends Migration
             $table->boolean('published');
             $table->timestamps();
         });
+        /**
+         * renamed table name
+         */
+        Schema::rename('table_products', 'products');
     }
 
     /**
@@ -32,6 +36,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('table_products');
+        Schema::rename('table_products', 'products');
+
     }
 
     public function Category():HasMany

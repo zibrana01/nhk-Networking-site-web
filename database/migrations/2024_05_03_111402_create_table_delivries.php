@@ -16,9 +16,15 @@ return new class extends Migration
         Schema::create('table_delivries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('delivery_adresse');
-            $table->foreign('id')->references('id')->on('table_commandes')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('commandes')->onDelete('cascade');
             $table->timestamps();
         });
+
+        /**
+         * rename table name
+         */
+
+         Schema::rename('table_delivries', 'delivries');
     }
 
     /**
@@ -27,6 +33,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('table_delivries');
+        Schema::rename('table_delivries', 'delivries');
+
     }
 
     public function Command(): BelongsTo
