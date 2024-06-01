@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Auth\GoogleLoginController;
+use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
