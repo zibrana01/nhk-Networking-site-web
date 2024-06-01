@@ -45,4 +45,19 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+    //Méthode pour déconnecter un user
+    public function logout(Request $request){
+
+        Auth::logout(); //deconnexion de l'utilisateur actuellement authentifié
+
+        // Effacer les sessions authentifiées
+        $request->session()->invalidate();
+
+        // Effacer le cookie de l'utilisateur
+        //$request->session()->regenerateToken();
+
+        // Redirection vers la page de connexion, ou toute autre page souhaitée
+        return redirect()->route('login');
+    }
 }

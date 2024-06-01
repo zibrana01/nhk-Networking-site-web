@@ -22759,7 +22759,9 @@ body.rtl_mode table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first
 }
 
 .bg-dark {
-    background-color: var(--primary-color) !important
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 0.5;
+    
 }
 
 .bg-dark-defualt {
@@ -24034,3 +24036,4 @@ body.rtl_mode table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first
     background-color: transparent;
     border-bottom: none
 }
+
