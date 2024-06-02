@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -40,9 +41,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 
 //register route
-Route::get('/register', function(){
-    return view('auth.register');
-})->name('register');
 
 
 require __DIR__.'/auth.php';
@@ -58,12 +56,4 @@ Route::get('/user-list' , function(){
 
 Route::get('/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
-// Route::get('google',function(){
 
-//     return view('googleAuth');
-    
-// });
-    
-// Route::get('auth/google', 'AuthLoginController@redirectToGoogle');
-
-// Route::get('auth/google/callback', 'AuthLoginController@handleGoogleCallback');

@@ -1,56 +1,3 @@
-{{-- <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout> --}}
-
 
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
@@ -106,7 +53,8 @@
                     <div class="col-lg-12 d-flex justify-content-center align-items-center border-0 rounded-lg auth-h100">
                         <div class="w-100 p-3 p-md-5 card border-0 bg-dark text-light" style="max-width: 32rem;">
                             <!-- Form -->
-                            <form class="row g-1 p-3 p-md-4">
+                            <form class="row g-1 p-3 p-md-4" action="{{ route('register') }}" method="POST">
+                                @csrf
                                 <div class="col-12 text-center mb-1 mb-lg-5">
                                     <h1>Créer un compte</h1>
                                    
@@ -114,33 +62,68 @@
                                 <div class="col-6">
                                     <div class="mb-2">
                                         <label class="form-label">Nom et Prénom</label>
-                                        <input type="text" name="firstname"  class="form-control form-control-lg" placeholder="Entrez votre nom" required>
+                                        <input type="text" name="firstname"  class="form-control form-control-lg @error('firstname')
+                                            is-invalid
+                                        @enderror" placeholder="Entrez votre nom" required>
                                     </div>
                                 </div>
+                                @error('firstname')
+                                <div class="col-6">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                                 <div class="col-6">
                                     <div class="mb-2">
                                         <label class="form-label">&nbsp;</label>
-                                        <input type="text" name="lastname" class="form-control form-control-lg" placeholder="Entrez votre prénom" required>
+                                        <input type="text" name="lastname" class="form-control form-control-lg @error('lastname')
+                                            is-invalid
+                                        @enderror" placeholder="Entrez votre prénom" required>
                                     </div>
                                 </div>
+                                @error('lastname')
+                                <div class="col-6">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                                 <div class="col-12">
                                     <div class="mb-2">
                                         <label class="form-label">Email </label>
-                                        <input type="email" name="email" class="form-control form-control-lg" placeholder="name@example.com" required>
+                                        <input type="email" name="email" class="form-control form-control-lg @error('email')
+                                            is-invalid
+                                        @enderror" placeholder="name@example.com" required>
                                     </div>
                                 </div>
+                                @error('email')
+                                <div class="col-12">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                                 <div class="col-12">
                                     <div class="mb-2">
                                         <label class="form-label">Téléphone</label>
-                                        <input type="text" name="phone_number" class="form-control form-control-lg" placeholder="+228 70851235" >
+                                        <input type="text" name="phone_number" class="form-control form-control-lg @error('phone_number')
+                                            is-invalid
+                                        @enderror" placeholder="+228 70851235" >
                                     </div>
                                 </div>
+                                @error('phone_number')
+                                <div class="col-12">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                                 <div class="col-12">
                                     <div class="mb-2">
                                         <label class="form-label">Adresse</label>
-                                        <input type="text" name="adresse" class="form-control form-control-lg" placeholder="Rue Eyedema">
+                                        <input type="text" name="adresse" class="form-control form-control-lg @error('adresse')
+                                            is-invalid
+                                        @enderror" placeholder="Rue Eyedema">
                                     </div>
                                 </div>
+                                @error('adresse')
+                                <div class="col-12">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             
                                 <div class="col-12">
                                     <div class="form-check">
@@ -151,10 +134,10 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-center mt-4">
-                                    <a href="auth-signin.html" class="btn btn-lg btn-block btn-light lift text-uppercase" alt="SIGNUP">S'incrire</a>
+                                    <button type="submit" class="btn btn-lg btn-block btn-light lift text-uppercase" atl="signin">S'incrire</a></button>
                                 </div>
                                 <div class="col-12 text-center mt-4">
-                                    <span class="text-muted">Avez vous déjà un compte? <a href="auth-signin.html" title="Sign in" class="text-secondary">Se connecter</a></span>
+                                    <span class="text-muted">Avez vous déjà un compte? <a href="{{ route('login') }}" title="Sign in" class="text-secondary">Se connecter</a></span>
                                 </div>
                             </form>
                             <!-- End Form -->

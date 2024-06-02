@@ -19,6 +19,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('email')->unique();
             $table->string('phone_number');
             $table->string('adresse');
             $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
