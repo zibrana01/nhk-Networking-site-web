@@ -35,20 +35,7 @@
             <div class="container-xxl">
 
                 <div class="row g-0">
-                    {{-- <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center rounded-lg auth-h100">
-                        <div style="max-width: 25rem;">
-                            <div class="text-center mb-5">
-                                <img src="{{ asset('assets/images/logo2.jpeg') }}" alt="LOGO NHK networking"> 
-                            </div>
-                            <div class="mb-5">
-                                <h2 class="color-900 text-center">NHK networking</h2>
-                            </div>
-                            <!-- Image block -->
-                            <div class="">
-                                <img src="{{ asset('assets/images/login-img.svg') }}" alt="login-img">
-                            </div>
-                        </div>
-                    </div> --}}
+                    
                   
                     <div class="col-lg-12 d-flex justify-content-center align-items-center border-0 rounded-lg auth-h100">
                         <div class="w-100 p-3 p-md-5 card border-0 bg-dark text-light" style="max-width: 32rem;">
